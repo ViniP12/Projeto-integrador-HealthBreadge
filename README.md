@@ -1,39 +1,49 @@
-HealthBridge — Front-End
+# HealthBridge
 
-Sobre o projeto
+## Sobre o projeto
 
-O HealthBridge é um projeto acadêmico voltado ao compartilhamento seguro de informações essenciais de saúde entre pacientes e profissionais da área, buscando facilitar o acesso a dados importantes em situações que exigem atendimento ou acompanhamento.
+O HealthBridge é um protótipo acadêmico de compartilhamento de dados essenciais de saúde entre instituições e profissionais, mediante consentimento do paciente. Ele reúne os dados essenciais em um perfil único e registra o consentimento de compartilhamento, os alertas e a auditoria das ações.
 
-Esta contribuição corresponde ao desenvolvimento do Front-End da aplicação, responsável pela interface visual e pela interação do usuário com o sistema.
+> Todos os dados são fictícios. O projeto não deve ser usado com dados reais nem em atendimento clínico.
 
-Minha contribuição
+## Funcionalidades
 
-Desenvolvimento da interface do HealthBridge, incluindo:
+- **Perfil único do paciente:** dados essenciais (idade, tipo sanguíneo, sexo, alergias, condições e medicamentos) e histórico de registros.
+- **Cadastro e registros clínicos:** cadastro de pacientes e de registros (consulta, exame, internação), com validação das entradas.
+- **Consentimento de compartilhamento:** concessão e revogação por paciente, com data registrada.
+- **Alertas:** consentimento revogado e acompanhamento recomendado.
+- **Auditoria:** registro de cadastros, novos registros e mudanças de consentimento.
+- **Dashboard e busca:** indicadores, pacientes recentes e busca por nome ou identificador.
 
-- Estrutura visual e organização das telas;
-- Layout e estilização da aplicação;
-- Componentes de interface e navegação;
-- Interações realizadas pelo usuário;
-- Apresentação das informações de saúde de forma clara e organizada;
-- Interface voltada à facilidade de uso e acessibilidade.
+## Arquitetura
 
-Tecnologias utilizadas
+| Arquivo | Camada | Responsabilidade |
+|---|---|---|
+| `frontend.html` | Interface | Telas, navegação, formulários e consumo da API (HTML, CSS e JavaScript) |
+| `backend.py` | API REST | Endpoints, validação de entradas e regras de alertas e auditoria (FastAPI e Pydantic) |
+| `database.py` | Banco de dados | Conexão SQLite, modelos ORM (SQLAlchemy) e dados fictícios de demonstração |
+| `README.md` | Documentação | Descrição e instruções |
 
-- HTML5
-- CSS3
-- JavaScript
-- Python
+**Modelo de dados:** `patients` (dados essenciais e consentimento), `records` (histórico clínico, ligado ao paciente) e `audit` (eventos). Os dados de demonstração são criados na primeira execução.
 
-Objetivo
+## Tecnologias
 
-Desenvolver uma interface intuitiva, organizada e acessível, permitindo que os usuários interajam com as funcionalidades propostas pelo HealthBridge de maneira simples e compreensível.
+- HTML5, CSS3 e JavaScript puro (Fetch API)
+- Python 3.10+
+- FastAPI, Uvicorn e Pydantic
+- SQLAlchemy e SQLite
 
-Contexto acadêmico
 
-Projeto desenvolvido em grupo como atividade acadêmica, com divisão de responsabilidades entre os integrantes, contemplando diferentes áreas da aplicação.
+## Limitações
 
-Esta publicação apresenta exclusivamente a contribuição referente ao desenvolvimento do Front-End.
+Protótipo acadêmico, não pronto para produção:
 
----
+- autenticação simulada e sem permissões clínicas;
+- consentimento registrado e auditado, mas ainda sem bloquear o acesso aos dados na API;
+- sem criptografia ponta a ponta e sem integração institucional (como o PEC e-SUS);
+- indicadores do dashboard demonstrativos.
 
-HealthBridge — Conectando informações, facilitando cuidados.
+
+## Contexto acadêmico
+
+Projeto desenvolvido em grupo no Projeto Integrador II (ADS, 2026/2), a partir do case de otimização do acesso a dados de pacientes por instituições e profissionais de saúde.
